@@ -1,0 +1,39 @@
+@startuml
+
+header Bravo Six by The Bayesian Conspiracy
+title Benefit Program Application Sequence Diagram
+footer Page %page% of %lastpage%
+
+actor User
+participant Frontend
+participant Backend
+database Database
+collections Storage
+
+User -> Frontend: Application Information
+Frontend --> User: Validation Errors
+
+User -> Frontend: Submission Request
+Frontend -> Backend: Send Form Contents
+
+Backend -> Database: Get Program Requirements
+Database --> Backend: Requirements
+
+Backend --> Frontend: Eligibility & Validation Results
+Frontend --> User: Display Results
+
+User -> Frontend: Request Form Generation
+Frontend -> Backend: Request Form Generation
+
+Backend -> Database: Get Base Form Location
+Database --> Backend: Base Form Location
+Backend -> Storage: Get Base Form File
+Storage --> Backend: Base Form File
+Backend -> Backend: Get Form Filler
+
+Backend -> Storage: Store Filled Document
+Backend -> Database: Filled Document URL
+
+Backend -> Frontend: Results & Link to Download
+Frontend -> User: Present Results & Download Link
+@enduml
