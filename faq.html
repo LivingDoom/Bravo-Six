@@ -43,14 +43,18 @@
       <a class="fitted item" href="homepage.html">
         <i class="home icon"></i>
       </a>
-      <!--Search Icon-->
-      <a class="fitted item">
-        <i class="search icon"></i>
-      </a>
       <!--User Icon-->
       <a class="fitted item">
         <i class="user icon"></i>
       </a>
+      <!--Search Icon-->
+      <div class="ui search">
+        <div class="ui icon input">
+          <input class="prompt" type="text" placeholder="Search...">
+          <i class="search icon"></i>
+        </div>
+        <div class="results"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -135,5 +139,12 @@
   </div>
 </div>
 
+<script>
+  $('.ui.search')
+      .search({
+        source: content
+      })
+  ;
+</script>
 </body>
 </html>
