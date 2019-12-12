@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home Page</title>
+  <title>Login</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-  <link rel="stylesheet" href="styleHome.css">
+  <link rel="stylesheet" href="styleLogin.css">
   <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -17,6 +17,7 @@
   <script src="semantic/dist/semantic.min.js"></script>
 </head>
 <body>
+
 <!--Top Menubar-->
 <div class="ui borderless top menu">
   <div class="ui container">
@@ -50,7 +51,7 @@
       <div class="ui search">
         <div class="ui icon input">
           <input class="prompt" type="text" placeholder="Search...">
-            <i class="search icon"></i>
+          <i class="search icon"></i>
         </div>
         <div class="results"></div>
       </div>
@@ -58,30 +59,41 @@
   </div>
 </div>
 
-<!--Logo Image-->
-<img class="ui small centered image" src="logo.png">
-
-<!--Middle Section-->
-<div class="ui borderless middle menu">
-  <div class="ui centered grid container">
-
-    <a class="item">GETTING STARTED</a>
-
-    <div class="ui dropdown item">
-      <div class="text">APPLY FOR WELFARE PROGRAMS</div>
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item" href="welfare.html">WELFARE</a>
+<!--Login grid-->
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui blue image header">
+      <img src="logo.png" class="image">
+      <div class="content">
+        Log-in to your account
       </div>
+    </h2>
+    <form class="ui large form">
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="user icon"></i>
+            <input type="text" name="email" placeholder="E-mail address">
+          </div>
+        </div>
+        <div class="field">
+          <div class="ui left icon input">
+            <i class="lock icon"></i>
+            <input type="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div class="ui fluid large blue submit button">Login</div>
+      </div>
+
+      <div class="ui error message"></div>
+
+    </form>
+
+    <div class="ui message">
+      New to us? <a href="#">Sign Up</a>
     </div>
-
-    <a class="item" href="faq.html">FAQ</a>
-
   </div>
 </div>
-
-<!--Home image-->
-<img class="ui fluid image" src="help.jpg">
 
 <!--Footer-->
 <div class="footer-background">
@@ -144,16 +156,44 @@
   </div>
 </div>
 
-<!--Dropdown menu needs this script!-->
 <script>
-  $('.ui.dropdown')
-      .dropdown()
-  ;
-  $('.ui.search')
-      .search({
-        source: content
+  $(document)
+      .ready(function() {
+        $('.ui.form')
+            .form({
+              fields: {
+                email: {
+                  identifier  : 'email',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your e-mail'
+                    },
+                    {
+                      type   : 'email',
+                      prompt : 'Please enter a valid e-mail'
+                    }
+                  ]
+                },
+                password: {
+                  identifier  : 'password',
+                  rules: [
+                    {
+                      type   : 'empty',
+                      prompt : 'Please enter your password'
+                    },
+                    {
+                      type   : 'length[6]',
+                      prompt : 'Your password must be at least 6 characters'
+                    }
+                  ]
+                }
+              }
+            })
+        ;
       })
   ;
 </script>
+
 </body>
 </html>
