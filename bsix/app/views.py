@@ -33,6 +33,6 @@ def apply(request):
         form = BenefitCheckForm()
     
     return render(request, 'app/apply.html', {'form': form})
-  
+    
 def unemploymentConfirmation(request):
     return render(request, 'app/unemploymentConfirmation.html')
