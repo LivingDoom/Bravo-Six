@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Home Page</title>
+  <title>Getting Started</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script type="text/javascript"
           src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
-  <link rel="stylesheet" href="styleHome.css">
+  <link rel="stylesheet" href="styleGettingStarted.css">
   <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
@@ -58,34 +58,31 @@
   </div>
 </div>
 
-<!--Logo Image-->
-<img class="ui small centered image" src="logo.png">
+<!--Main text container-->
+<div class="ui main text container">
+  <h1 class="ui header">IMPORTANT WELFARE INFORMATION</h1>
+  <img class="wireframe" src="logo.png">
+  <p>
+    <b>Create Account</b>
+    <p>
+      Create an account to save your applications and information for effortless applications the next time
+      around. Click <a href="createAccount.html"><font color="blue">here</font></a> to create your account.
+    </p>
 
-<!--Middle Section-->
-<div class="ui borderless middle menu">
-  <div class="ui centered grid container">
+    <b>Learn More About Welfare Programs</b>
+    <p>
+      Considering applying for a Welfare program? If you're not sure about what programs may be
+      available to you, whether you qualify or how it all works then we strongly suggest that you click <a href="welfare.html"><font color="blue">here</font></a>
+      to learn more.
+    </p>
 
-    <a class="item">GETTING STARTED</a>
+    <b>Next Apply!</b>
+    <p>
+      Once you've created an account and have been educated on the welfare process then it's time to apply <a href=""><font color="blue">here</font></a>.
+    </p>
 
-    <div class="ui dropdown item">
-      <div class="text">APPLY FOR WELFARE PROGRAMS</div>
-      <i class="dropdown icon"></i>
-      <div class="menu">
-        <a class="item" href="welfare.html">Welfare</a>
-        <a class="item" href="">Unemployment</a>
-        <a class="item" href="">Medicaid</a>
-        <a class="item" href="">Child Health Insurance Program (CHIP)</a>
-        <a class="item" href="">Supplemental Nutrition Assistance Program (SNAP)</a>
-      </div>
-    </div>
-
-    <a class="item" href="faq.html">FAQ</a>
-
-  </div>
+  </p>
 </div>
-
-<!--Home image-->
-<img class="ui fluid image" src="help.jpg">
 
 <!--Footer-->
 <div class="footer-background">
@@ -148,16 +145,5 @@
   </div>
 </div>
 
-<!--Dropdown menu needs this script!-->
-<script>
-  $('.ui.dropdown')
-      .dropdown()
-  ;
-  $('.ui.search')
-      .search({
-        source: content
-      })
-  ;
-</script>
 </body>
 </html>
