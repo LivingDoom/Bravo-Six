@@ -9,4 +9,5 @@ urlpatterns = [
     path('welfare', views.welfare, name='welfare'),
     path('application', views.application, name='application'),
     path('unemploymentConfirmation', views.unemploymentConfirmation, name='unemploymentConfirmation'),
+    path('gettingStarted', views.gettingStarted, name='gettingStarted'),
 ]

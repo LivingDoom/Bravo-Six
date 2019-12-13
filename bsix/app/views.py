@@ -36,3 +36,6 @@ def apply(request):
     
 def unemploymentConfirmation(request):
     return render(request, 'app/unemploymentConfirmation.html')
+
+def gettingStarted(request):
+    return render(request, 'app/gettingStarted.html')
