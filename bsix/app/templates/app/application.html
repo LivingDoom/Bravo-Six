@@ -1,0 +1,177 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block title %}Welfare | Bravo Six{% endblock %}
+
+{% block headerinclude %}
+<link rel="stylesheet" href="{% static "app/css/application.css" %}">
+{% endblock %}
+
+
+{% block content %}
+<!--Main text container-->
+<div class="ui main text container">
+  <h1 class="ui header">Eligibility Form</h1>
+
+  <!-- basic info section -->
+  <form class="ui form segment">
+    <h2>Basic Information</h2>
+    <div class="three fields">
+      <div class="field">
+        <label>Name (Last):</label>
+        <input placeholder="Last" name="lastName" type="text">
+      </div>
+      <div class="field">
+        <label>Name (First):</label>
+        <input placeholder="First" name="firstName" type="text">
+      </div>
+      <div class="field">
+        <label>Middle Initial:</label>
+        <input placeholder="M" name="middleName" type="text">
+      </div>
+    </div>
+    <div class="field">
+      <label>Address:</label>
+      <input placeholder="Address" name="address" type="text">
+    </div>
+    <div class="four fields">
+      <div class="field">
+        <label>City:</label>
+        <input placeholder="City" name="city" type="text">
+      </div>
+      <div class="field">
+        <label>State:</label>
+        <input placeholder="WA" name="state" type="text">
+      </div>
+      <div class="field">
+        <label>Zip Code:</label>
+        <input placeholder="-----" name="zip" type="text">
+      </div>
+    </div><br>
+    <h2>Financial Information</h2>
+    <div class="field">
+      <label>How many people are currently living in your household?</label>
+      <select name="people" multiple="" class="ui dropdown">
+        <option value="">Select</option>
+        <option value="1">1</option><option value="2">2</option>
+        <option value="3">3</option><option value="4">4</option>
+        <option value="5">5</option><option value="6">6</option>
+        <option value="7">7</option><option value="8">8</option>
+        <option value="9">9</option><option value="10">10</option>
+        <option value="11">11</option><option value="12+">12+</option>
+      </select>
+    </div>
+    <div class="two fields">
+      <div class="field">
+        <label>Annual Gross Income:</label>
+        <div class="ui right labeled input">
+          <label for="amount" class="ui label">$</label>
+          <input type="text" placeholder="Amount" id="amount">
+          <div class="ui basic label">.00</div>
+        </div>
+      </div>
+      <div class="field">
+        <label>Monthly Net Income:</label>
+        <div class="ui right labeled input">
+          <label for="amount" class="ui label">$</label>
+          <input type="text" placeholder="Amount" id="amount">
+          <div class="ui basic label">.00</div>
+        </div>
+      </div>
+    </div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="disabled">
+        <label>Are you disabled?</label>
+    </div></div><br>
+    <h2>Additional Information</h2>
+    <div><b>Please select all of the following that apply to you:</b></div>
+    <br>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="house60">
+        <label>Is anyone in your household besides you over 60 years old?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="houseDisabled">
+        <label>Is anyone in your household besides you disabled?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="unemployed">
+        <label>Are you currently unemployed or have your hours been involuntarily reduced?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="workedWA">
+        <label>Have you worked in Washington in the past 18 months?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="worked680">
+        <label>Have you worked at least 680 hours in the past 12 months?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="worked680WA">
+        <label>If yes, were some of those wages earned in Washington?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="onLeave">
+        <label>Are you currently on a leave of absence, or have lost one day or less per week of full-time work?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="60+cook">
+        <label>Are you 60+ years of age and unable to cook your own meals?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="incapacity">
+        <label>Have you been unable to work for the last 90 days due to mental of physical incapacity?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="PWAorTANF">
+        <label>Are you eligible for Pregnant Women Assistance (PWA) or Temporary Assistance to Needy Families (TANF)?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="pursuedMedicaid">
+        <label>Have you pursued federal aid assistance (such as Medicaed) unless there is good cause to not?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="substanceTreatment">
+        <label>If required, have you participated in substance use disorder treatment, unless theer is good cause to not?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="SSIeligible">
+        <label>Are you eligible for SSI benefits or are you an ineligible spouse of an SSI recipient?</label>
+    </div></div>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="SSAterminated">
+        <label>Has the Social Security Administration denied or terminated benefits to you due to a failure to follow program rules?</label>
+    </div></div>
+    <div class="ui primary submit button">Submit</div>
+    <div class="ui error message"></div>
+  </form>
+  <br><br>
+
+</div>
+<script>
+    $('.ui.form')
+      .form({ fields: { 
+        name1: { identifier: 'lastName', rules: [{
+                type   : 'empty',
+                prompt : 'Please enter your last name'
+              }]},
+        name2: { identifier: 'firstName', rules: [{
+                type   : 'empty',
+                prompt : 'Please enter your first name'
+              }]},
+        age: { identifier: 'age', rules: [{
+                type   : 'empty',
+                prompt : 'Please enter your age'
+              },
+              {
+                type   : 'minLength[1]',
+                prompt : 'Please enter a valid age'
+              },
+              {
+                type   : 'maxLength[2]',
+                prompt : 'Please enter a valid age'
+              }]},
+        }});
+  </script>
+{% endblock %}

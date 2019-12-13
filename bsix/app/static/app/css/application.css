@@ -1,0 +1,8 @@
+.ui.checkbox {
+  padding-bottom: 20px;
+}
+
+.ui.borderless.middle.menu {
+  box-shadow: none;
+  border: none;
+}

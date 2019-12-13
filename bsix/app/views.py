@@ -10,3 +10,6 @@ def faq(request):
 
 def welfare(request):
     return render(request, 'app/welfare.html')
+
+def application(request):
+    return render(request, 'app/application.html')
