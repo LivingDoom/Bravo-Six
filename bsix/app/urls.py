@@ -10,4 +10,5 @@ urlpatterns = [
     path('application', views.application, name='application'),
     path('unemploymentConfirmation', views.unemploymentConfirmation, name='unemploymentConfirmation'),
     path('gettingStarted', views.gettingStarted, name='gettingStarted'),
+    path('createAccount', views.createAccount, name='createAccount'),
 ]
