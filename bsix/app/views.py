@@ -40,8 +40,5 @@ def unemploymentConfirmation(request):
 def gettingStarted(request):
     return render(request, 'app/gettingStarted.html')
 
-def login(request):
-    return render(request, 'app/login.html')
-
 def createAccount(request):
     return render(request, 'app/createAccount.html')
