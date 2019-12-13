@@ -150,6 +150,10 @@
     <div class="inline field"><div class="ui checkbox">
         <input type="checkbox" name="ssa_terminated">
         <label>Has the Social Security Administration denied or terminated benefits to you due to a failure to follow program rules?</label>
+    </div></div><br><br>
+    <div class="inline field"><div class="ui checkbox">
+        <input type="checkbox" name="terms">
+        <label>Do you accept the Terms and Agreements?</label>
     </div></div>
     <div class="ui primary submit button" href="/bsix/home">Submit</div>
     <div class="ui error message"></div>
@@ -203,6 +207,10 @@
         netMonthly: { identifier: 'monthly_net', rules: [{
                 type   : 'integer',
                 prompt : 'Please enter a valid income amount'
+              }]},
+        terms: { identifier: 'terms', rules: [{
+                type   : 'checked',
+                prompt : 'You must accept the terms and conditions'
               }]}
         }})
   </script>
