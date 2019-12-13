@@ -44,8 +44,8 @@
         <i class="home icon"></i>
       </a>
       <!--User Icon-->
-      <a class="fitted item" href="login.html">
-        <i class="user icon"></i>
+      <a class="fitted item" href="{% url 'login' %}">
+        <i class="user icon"></i>{% if user.is_authenticated %}{{ user.get_username }}&nbsp;{% endif %}
       </a>
       <!--Search Icon-->
       <div class="ui search">

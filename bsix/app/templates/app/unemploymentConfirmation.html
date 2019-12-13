@@ -1,0 +1,63 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block title %}Rights and Responsibilities | Bravo Six{% endblock %}
+
+{% block headerinclude %}
+<link rel="stylesheet" href="{% static "app/css/welfare.css" %}">
+{% endblock %}
+
+
+{% block content %}
+<div class="ui main text container">
+    <h1 class="ui header">Your Benefits Rights and Responsibilities</h1>
+    <img class="wireframe" src="logo.png">
+  
+    <p>
+      <b>Your responsibilities as an unemployment claimant</b>
+      <p>
+      You’re responsible for understanding this important information.
+      Don’t reply to this email! We won’t receive it. If you have questions, log into eServices or call the claims center at 800-318-6022.
+      </p>
+  
+      <b>You must submit weekly claims</b>
+      <p>You must submit weekly claims For unemployment purposes, a week is Sunday through Saturday. For every week you want to receive benefits, you must:</p>
+      <ul style="list-style-type:disc;">
+        <li>Submit a weekly claim.</li>
+        <li>Look for work (unless we tell you otherwise).</li>
+        <li>Report your gross earnings and number of hours worked, even if you have not been paid yet.</li>
+      </ul>
+  
+      <p><b>You must submit weekly claims even if you are:</b></p>
+      <ul style="list-style-type:disc;">
+        <li>Waiting to hear if you are eligible for benefits.</li>
+        <li>Expecting wages and hours to be added to your claim.</li>
+        <li>Appealing a denial of benefits.</li>
+        <li>Claiming a waiting week.</li>
+      </ul>
+  
+      <b>Your job search</b>
+      <p>Your job search To be eligible to receive unemployment benefits, you must be:</p>
+      <ul style="list-style-type:disc;">
+        <li>Able to work.</li>
+        <li>Available for work.</li>
+        <li>Actively seeking work.</li>
+      </ul>
+  
+      <p>Unless we tell you otherwise, you also must do one of the following activities each week you submit a claim, or you might lose your benefits. You must:</p>
+      <ul style="list-style-type:disc;">
+        <li>Contact at least three employers each and every week; or</li>
+        <li>Go to your local WorkSource office and participate in three approved job search activities; or</li>
+        <li>Complete a combined total of three employer contacts and job search activities.</li>
+      </ul>
+  
+      <p>You must keep a written log of your job search activities.</p>
+  
+      <p>For more information, read the Handbook for Unemployed Workers at esd.wa.gov/handbook.</p>
+  
+      <b>To change how you get paid</b>
+      <p>Log in to eServices if you want to change how you receive your benefit payments. You can choose to get them on a debit card or deposited directly into your bank account.</p>
+    </p>
+  </div>
+{% endblock %}

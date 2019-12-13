@@ -8,4 +8,5 @@ urlpatterns = [
     path('faq', views.faq, name='faq'),
     path('welfare', views.welfare, name='welfare'),
     path('application', views.application, name='application')
+    path('unemploymentConfirmation', views.unemploymentConfirmation, name='unemploymentConfirmation'),
 ]
