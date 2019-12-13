@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Welfare | Bravo Six{% endblock %}
+{% block title %}Application | Bravo Six{% endblock %}
 
 {% block headerinclude %}
 <link rel="stylesheet" href="{% static "app/css/application.css" %}">
@@ -15,14 +15,14 @@
   <h1 class="ui header">Eligibility Form</h1>
 
   <!-- basic info section -->
-  <form class="ui form segment">
+  <form class="ui form container" id="main">
     <h2>Basic Information</h2>
     <div class="three fields">
-      <div class="field">
+      <div class="required field">
         <label>Name (Last):</label>
         <input placeholder="Last" name="lastName" type="text">
       </div>
-      <div class="field">
+      <div class="required field">
         <label>Name (First):</label>
         <input placeholder="First" name="firstName" type="text">
       </div>
@@ -31,34 +31,34 @@
         <input placeholder="M" name="middleName" type="text">
       </div>
     </div>
-    <div class="field">
+    <div class="required field">
       <label>Address:</label>
       <input placeholder="Address" name="street_address" type="text">
     </div>
     <div class="four fields">
-      <div class="field">
+      <div class="required field">
         <label>City:</label>
         <input placeholder="City" name="city" type="text">
       </div>
-      <div class="field">
+      <div class="required field">
         <label>State:</label>
         <input placeholder="WA" name="state" type="text">
       </div>
-      <div class="field">
+      <div class="required field">
         <label>Zip Code:</label>
         <input placeholder="-----" name="zipcode" type="text">
       </div>
-      <div class="field">
+      <div class="required field">
         <label>Age:</label>
         <input placeholder="0" name="age" type="text">
       </div>
     </div>
-    <div class="field">
+    <div class="required field">
       <label>Email Address:</label>
       <input placeholder="you@home.com" name="email" type="text">
     </div><br>
     <h2>Financial Information</h2>
-    <div class="field">
+    <div class="required field">
       <label>How many people are currently living in your household?</label>
       <select name="household_size" class="ui search dropdown">
         <option value="">Select</option>
@@ -71,7 +71,7 @@
       </select>
     </div>
     <div class="two fields">
-      <div class="field">
+      <div class="required field">
         <label>Annual Gross Income:</label>
         <div class="ui right labeled input">
           <label for="amount" class="ui label">$</label>
@@ -79,7 +79,7 @@
           <div class="ui basic label">.00</div>
         </div>
       </div>
-      <div class="field">
+      <div class="required field">
         <label>Monthly Net Income:</label>
         <div class="ui right labeled input">
           <label for="amount" class="ui label">$</label>
@@ -155,15 +155,19 @@
         <input type="checkbox" name="terms">
         <label>Do you accept the Terms and Agreements?</label>
     </div></div>
-    <div class="ui primary submit button" href="/bsix/home">Submit</div>
+    <input class="ui large teal submit button" name="submission" type="submit" value="Submit" style="align-self:left;">
     <div class="ui error message"></div>
+    <div class="ui success message">Success!</div>
   </form>
   <br><br>
 
 </div>
 <script>
-    $('.ui.form')
-      .form({ fields: { 
+    $('#main').submit(function(e){e.preventDefault();});
+    $('#main')
+      .form({ 
+        on: 'blur',
+        fields: { 
         name1: { identifier: 'lastName', rules: [{
                 type   : 'empty',
                 prompt : 'Please enter your last name'
@@ -212,6 +216,9 @@
                 type   : 'checked',
                 prompt : 'You must accept the terms and conditions'
               }]}
+        },
+        onSuccess: function(){
+          window.location.href = "/bsix/";
         }})
   </script>
 {% endblock %}
