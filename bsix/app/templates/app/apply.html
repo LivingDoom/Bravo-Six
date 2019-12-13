@@ -1,0 +1,33 @@
+{% extends "app/base.html" %}
+
+{% load static %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+
+{% comment %} {{ form.as_p }} {% endcomment %}
+<div id="wrapper" style="width: 768px; margin: 0 auto;">
+    <h1>Eligibility Form</h1>
+    <form class="ui form" method="post" novalidate>
+    {% csrf_token %}
+
+    {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+        <div class="field">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="ui button">Submit</button>
+    </form>
+</div>
+{% endblock %}
