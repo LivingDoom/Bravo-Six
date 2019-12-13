@@ -33,7 +33,7 @@
     </div>
     <div class="field">
       <label>Address:</label>
-      <input placeholder="Address" name="address" type="text">
+      <input placeholder="Address" name="street_address" type="text">
     </div>
     <div class="four fields">
       <div class="field">
@@ -46,7 +46,7 @@
       </div>
       <div class="field">
         <label>Zip Code:</label>
-        <input placeholder="-----" name="zip" type="text">
+        <input placeholder="-----" name="zipcode" type="text">
       </div>
       <div class="field">
         <label>Age:</label>
@@ -60,7 +60,7 @@
     <h2>Financial Information</h2>
     <div class="field">
       <label>How many people are currently living in your household?</label>
-      <select name="people" class="ui search dropdown">
+      <select name="household_size" class="ui search dropdown">
         <option value="">Select</option>
         <option value="1">1</option><option value="2">2</option>
         <option value="3">3</option><option value="4">4</option>
@@ -75,7 +75,7 @@
         <label>Annual Gross Income:</label>
         <div class="ui right labeled input">
           <label for="amount" class="ui label">$</label>
-          <input type="text" placeholder="Amount" id="amount" name="grossAnnual">
+          <input type="text" placeholder="Amount" name="income">
           <div class="ui basic label">.00</div>
         </div>
       </div>
@@ -83,7 +83,7 @@
         <label>Monthly Net Income:</label>
         <div class="ui right labeled input">
           <label for="amount" class="ui label">$</label>
-          <input type="text" placeholder="Amount" id="amount" name="netMonthly">
+          <input type="text" placeholder="Amount" name="monthly_net">
           <div class="ui basic label">.00</div>
         </div>
       </div>
@@ -96,11 +96,11 @@
     <div><b>Please select all of the following that apply to you:</b></div>
     <br>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="house60">
+        <input type="checkbox" name="household_has_senior">
         <label>Is anyone in your household besides you over 60 years old?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="houseDisabled">
+        <input type="checkbox" name="household_has_disabled">
         <label>Is anyone in your household besides you disabled?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
@@ -108,50 +108,50 @@
         <label>Are you currently unemployed or have your hours been involuntarily reduced?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="workedWA">
+        <input type="checkbox" name="work_in_state">
         <label>Have you worked in Washington in the past 18 months?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="worked680">
+        <input type="checkbox" name="hours_check">
         <label>Have you worked at least 680 hours in the past 12 months?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="worked680WA">
+        <input type="checkbox" name="hours_in_state">
         <label>If yes, were some of those wages earned in Washington?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="onLeave">
+        <input type="checkbox" name="on_leave_or_working">
         <label>Are you currently on a leave of absence, or have lost one day or less per week of full-time work?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="60+cook">
+        <input type="checkbox" name="unable_own_meals">
         <label>Are you 60+ years of age and unable to cook your own meals?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="incapacity">
+        <input type="checkbox" name="unable_work">
         <label>Have you been unable to work for the last 90 days due to mental of physical incapacity?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="PWAorTANF">
+        <input type="checkbox" name="pwa_tanf_eligible">
         <label>Are you eligible for Pregnant Women Assistance (PWA) or Temporary Assistance to Needy Families (TANF)?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="pursuedMedicaid">
+        <input type="checkbox" name="federal_aid_pursuit">
         <label>Have you pursued federal aid assistance (such as Medicaid) unless there is good cause to not?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="substanceTreatment">
+        <input type="checkbox" name="subs_abuse_treatment">
         <label>If required, have you participated in substance use disorder treatment, unless theer is good cause to not?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="SSIeligible">
+        <input type="checkbox" name="ssi_eligibility">
         <label>Are you eligible for SSI benefits or are you an ineligible spouse of an SSI recipient?</label>
     </div></div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="SSAterminated">
+        <input type="checkbox" name="ssa_terminated">
         <label>Has the Social Security Administration denied or terminated benefits to you due to a failure to follow program rules?</label>
     </div></div>
-    <div class="ui primary submit button">Submit</div>
+    <div class="ui primary submit button" href="/bsix/home">Submit</div>
     <div class="ui error message"></div>
   </form>
   <br><br>
@@ -172,7 +172,7 @@
                 type   : 'integer[18..110]',
                 prompt : 'Please enter a valid age'
               }]},
-        address: { identifier: 'address', rules: [{
+        address: { identifier: 'street_address', rules: [{
                 type   : 'empty',
                 prompt : 'Please enter your address'
               }]},
@@ -184,7 +184,7 @@
                 type   : 'contains[wa]',
                 prompt : 'This software currently only supports Washington residents.'
               }]},
-        zip: { identifier: 'zip', rules: [{
+        zip: { identifier: 'zipcode', rules: [{
                 type   : 'integer[10000..99999]',
                 prompt : 'Please enter a valid zipcode'
               }]},
@@ -192,22 +192,18 @@
                 type   : 'email',
                 prompt : 'Please enter your email address'
               }]},
-        people: { identifier: 'people', rules: [{
+        people: { identifier: 'household_size', rules: [{
                 type   : 'minCount[1]',
                 prompt : 'Please select a number of household members'
               }]},
-        grossAnnual: { identifier: 'grossAnnual', rules: [{
+        grossAnnual: { identifier: 'income', rules: [{
                 type   : 'integer',
                 prompt : 'Please enter a valid income amount'
               }]},
-        netMonthly: { identifier: 'netMonthly', rules: [{
-                type   : 'integer',
-                prompt : 'Please enter a valid income amount'
-              }]},
-        netMonthly: { identifier: 'netMonthly', rules: [{
+        netMonthly: { identifier: 'monthly_net', rules: [{
                 type   : 'integer',
                 prompt : 'Please enter a valid income amount'
               }]}
-        }});
+        }})
   </script>
 {% endblock %}
