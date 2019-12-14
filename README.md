@@ -7,4 +7,18 @@ Bravo-Six is an online application used to help determine eligibility for health
  - Aidan Mattson
  - Alexander Yeang
 
-# Status: Design Phase
+# Status: Completed(ish)
+
+# Notes
+
+`bsix` is the app directory (a Django project root).
+
+To run locally with Python 3.7 and Django 3.0:
+
+`$ python manage.py runserver`
+
+You may need to create and run some migrations.
+
+`$ python manage.py makemigrations`
+
+`$ python manage.py migrate`
