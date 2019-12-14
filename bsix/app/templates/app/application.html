@@ -15,7 +15,7 @@
   <h1 class="ui header">Eligibility Form</h1>
 
   <!-- basic info section -->
-  <form class="ui form container" id="main" method="POST">
+  <form class="ui form container" id="main" method="POST" style="border-width: 1px; border-color: lightgrey; border-style: solid; padding: 20px;">
     {% csrf_token %}
     {% if form.errors %}
       <!-- Error messaging -->
