@@ -15,20 +15,28 @@
   <h1 class="ui header">Eligibility Form</h1>
 
   <!-- basic info section -->
-  <form class="ui form container" id="main">
+  <form class="ui form container" id="main" method="POST">
+    {% csrf_token %}
+    {% if form.errors %}
+      <!-- Error messaging -->
+      <div id="errors">
+        <div class="inner">
+          <p>There were some errors in the information you entered. Please correct the following:</p>
+          {{ form.non_field_errors }}
+          <ul>
+            {% for field in form %}
+              {% if field.errors %}<li>{{ field.label }}: {{ field.errors|striptags }}</li>{% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!-- /Error messaging -->
+    {% endif %}
     <h2>Basic Information</h2>
-    <div class="three fields">
+    <div class="one field">
       <div class="required field">
-        <label>Name (Last):</label>
-        <input placeholder="Last" name="lastName" type="text">
-      </div>
-      <div class="required field">
-        <label>Name (First):</label>
-        <input placeholder="First" name="firstName" type="text">
-      </div>
-      <div class="field">
-        <label>Middle Initial:</label>
-        <input placeholder="M" name="middleName" type="text">
+        <label>Full Name:</label>
+        <input placeholder="John S. Doe" name="full_name" type="text">
       </div>
     </div>
     <div class="required field">
@@ -49,8 +57,8 @@
         <input placeholder="-----" name="zipcode" type="text">
       </div>
       <div class="required field">
-        <label>Age:</label>
-        <input placeholder="0" name="age" type="text">
+        <label>Date of Birth:</label>
+        <input placeholder="mm/dd/yyyy" name="dob" type="date">
       </div>
     </div>
     <div class="required field">
@@ -89,7 +97,7 @@
       </div>
     </div>
     <div class="inline field"><div class="ui checkbox">
-        <input type="checkbox" name="disabled">
+        <input type="checkbox" name="disability_status">
         <label>Are you disabled?</label>
     </div></div><br>
     <h2>Additional Information</h2>
@@ -163,62 +171,55 @@
 
 </div>
 <script>
-    $('#main').submit(function(e){e.preventDefault();});
     $('#main')
       .form({ 
         on: 'blur',
         fields: { 
-        name1: { identifier: 'lastName', rules: [{
-                type   : 'empty',
-                prompt : 'Please enter your last name'
-              }]},
-        name2: { identifier: 'firstName', rules: [{
-                type   : 'empty',
-                prompt : 'Please enter your first name'
-              }]},
-        age: { identifier: 'age', rules: [{
-                type   : 'integer[18..110]',
-                prompt : 'Please enter a valid age'
-              }]},
-        address: { identifier: 'street_address', rules: [{
-                type   : 'empty',
-                prompt : 'Please enter your address'
-              }]},
-        city: { identifier: 'city', rules: [{
-                type   : 'empty',
-                prompt : 'Please enter a city'
-              }]},
-        state: { identifier: 'state', rules: [{
-                type   : 'contains[wa]',
-                prompt : 'This software currently only supports Washington residents.'
-              }]},
-        zip: { identifier: 'zipcode', rules: [{
-                type   : 'integer[10000..99999]',
-                prompt : 'Please enter a valid zipcode'
-              }]},
-        email: { identifier: 'email', rules: [{
-                type   : 'email',
-                prompt : 'Please enter your email address'
-              }]},
-        people: { identifier: 'household_size', rules: [{
-                type   : 'minCount[1]',
-                prompt : 'Please select a number of household members'
-              }]},
-        grossAnnual: { identifier: 'income', rules: [{
-                type   : 'integer',
-                prompt : 'Please enter a valid income amount'
-              }]},
-        netMonthly: { identifier: 'monthly_net', rules: [{
-                type   : 'integer',
-                prompt : 'Please enter a valid income amount'
-              }]},
-        terms: { identifier: 'terms', rules: [{
-                type   : 'checked',
-                prompt : 'You must accept the terms and conditions'
-              }]}
-        },
-        onSuccess: function(){
-          window.location.href = "/bsix/";
-        }})
+          full_name: { identifier: 'full_name', rules: [{
+                  type   : 'empty',
+                  prompt : 'Please enter your full name'
+                }]},
+          dob: { identifier: 'dob', rules: [{
+                  type: "regExp[/^(19|20)\\d\\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$/]",
+                  prompt : 'Please enter a valid date of birth'
+                }]},
+          address: { identifier: 'street_address', rules: [{
+                  type   : 'empty',
+                  prompt : 'Please enter your address'
+                }]},
+          city: { identifier: 'city', rules: [{
+                  type   : 'empty',
+                  prompt : 'Please enter a city'
+                }]},
+          state: { identifier: 'state', rules: [{
+                  type   : 'contains[wa]',
+                  prompt : 'This software currently only supports Washington residents.'
+                }]},
+          zip: { identifier: 'zipcode', rules: [{
+                  type   : 'integer[10000..99999]',
+                  prompt : 'Please enter a valid zipcode'
+                }]},
+          email: { identifier: 'email', rules: [{
+                  type   : 'email',
+                  prompt : 'Please enter your email address'
+                }]},
+          people: { identifier: 'household_size', rules: [{
+                  type   : 'minCount[1]',
+                  prompt : 'Please select a number of household members'
+                }]},
+          grossAnnual: { identifier: 'income', rules: [{
+                  type   : 'integer',
+                  prompt : 'Please enter a valid income amount'
+                }]},
+          netMonthly: { identifier: 'monthly_net', rules: [{
+                  type   : 'integer',
+                  prompt : 'Please enter a valid income amount'
+                }]},
+          terms: { identifier: 'terms', rules: [{
+                  type   : 'checked',
+                  prompt : 'You must accept the terms and conditions'
+                }]}
+        }
+      });
   </script>
 {% endblock %}

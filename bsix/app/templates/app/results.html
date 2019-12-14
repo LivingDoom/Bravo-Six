@@ -1,0 +1,49 @@
+{% extends "app/base.html" %}
+
+{% block title %}Eligibility Results{% endblock %}
+
+{% block content %}
+<div class="ui main text container">
+    <h1>Eligibility Results</h1>
+    <hr />
+    <h2>Housing and Essential Needs (HEN) Assistance</h2>
+    
+    {% if eligible %}
+    <p>You appear to be eligible for HEN assistance. The data
+    you have supplied meets the program eligibility criteria.</p>
+    {% else %}
+    <p>You appear to be ineligible for HEN assistance. The data
+    you have supplied does not meet the program eligibility criteria.</p>
+    {% endif %}
+    <ul>
+        {% for good, message in tests %}
+        <li>{% if good %}✅{% else %}❌{% endif %}&nbsp;{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% if eligible%}
+    <p>Consider applying for a HEN referral via the web at the
+    <a href="https://www.washingtonconnection.org/home/">Washington Connection website</a>
+    or at your local Community Services Office.
+    </p>
+    {% endif %}
+
+
+    <h2>Unemployment</h2>
+    {% if ui_eligible %}
+    <p>You appear to be eligible for unemployment assistance through the Washington Employment Security Department (ESD). The data
+    you have supplied meets the program eligibility criteria.</p>
+    {% else %}
+    <p>You appear to be ineligible for Washington unemployment assistance. The data
+    you have supplied does not meet the program eligibility criteria.</p>
+    {% endif %}
+    <ul>
+        {% for good, message in ui_tests %}
+        <li>{% if good %}✅{% else %}❌{% endif %}&nbsp;{{ message }}</li>
+        {% endfor %}
+    </ul>
+
+    {% if ui_eligible %}
+    <p>Begin the process of applying for Washington unemployment through ESD by going to <a href="https://esd.wa.gov">the Employment Security Department website</a> and
+    using eServices to apply.</p>
+</div>
+{% endblock %}
